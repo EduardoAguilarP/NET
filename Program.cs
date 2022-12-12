@@ -8,17 +8,9 @@ namespace net1
         {
             PersonaRepository repo= new PersonaRepository();
 
-            MySqlConnection conn= repo.obtenerConexion();
+            List<PersonaNueva> lista= repo.obtenerConexion();
 
-            var comando = conn.CreateCommand();
-            comando.CommandText = "select * from Personas";
-
-            var reader = comando.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            while(reader.Read()) {
-                Console.WriteLine(reader.GetString("nombre"));
-            }
-
-            Console.WriteLine("hola");
+           Console.WriteLine("hola");
         }
     }
 }

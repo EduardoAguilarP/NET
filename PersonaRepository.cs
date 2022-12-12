@@ -1,9 +1,10 @@
 using MySql.Data.MySqlClient;
+using System.Collections;
 namespace net1
 {
     public class PersonaRepository {
         
-        public MySqlConnection obtenerConexion() {
+        public List<PersonaNueva> obtenerConexion() {
 
             var sb = new MySqlConnectionStringBuilder
             {
@@ -16,7 +17,17 @@ namespace net1
             };
             MySqlConnection conn = new MySqlConnection(sb.ConnectionString);
             conn.Open();
-            return conn;
+
+            var comando = conn.CreateCommand();
+            comando.CommandText = "select * from Personas";
+
+            var reader = comando.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+            List<PersonaNueva> lista=new List<PersonaNueva>();
+            while(reader.Read()) {
+                PersonaNueva p= new PersonaNueva(reader.GetString("dni"), reader.GetString("nombre"), reader.GetString("apellidos"));
+                lista.Add(p);
+            }
+            return lista;
         }
     }
 }
