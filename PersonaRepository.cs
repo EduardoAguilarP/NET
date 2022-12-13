@@ -55,5 +55,24 @@ namespace net1
             }
             return lista;
         }
+
+        public void Insertar(PersonaNueva persona) {
+
+             var sb = new MySqlConnectionStringBuilder
+            {
+                Server = "localhost",
+                UserID = "root",
+                Password = "",
+                Port = 3306,
+                Database = "curso2"
+
+            };
+            MySqlConnection conn = new MySqlConnection(sb.ConnectionString);
+            conn.Open();
+
+            var comando = conn.CreateCommand();
+            comando.CommandText = "insert into Personas values('" +persona.DNI+ "','" +persona.Nombre+"','" +persona.Apellidos+ "')"; 
+            comando.ExecuteNonQuery();
+        }
     }
 }
