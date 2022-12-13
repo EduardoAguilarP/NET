@@ -16,6 +16,18 @@ namespace net1
                 Console.WriteLine(persona.Nombre);
                 Console.WriteLine(persona.Apellidos);
             }
+
+            Console.WriteLine("*******************");
+
+            List<PersonaNueva> lista2= repo.BuscarTodasOrdenadasPorNombre();
+
+            foreach (var persona in lista2)
+            {                
+                Console.WriteLine(persona.Nombre);
+                Console.WriteLine(persona.Apellidos);
+                Console.WriteLine(persona.DNI);
+            }
+
           
         }
     }
