@@ -8,9 +8,15 @@ namespace net1
         {
             PersonaRepository repo= new PersonaRepository();
 
-            List<PersonaNueva> lista= repo.obtenerConexion();
+            List<PersonaNueva> lista= repo.BuscarTodas();
 
-           Console.WriteLine("hola");
+            foreach (var persona in lista)
+            {
+                Console.WriteLine(persona.DNI);
+                Console.WriteLine(persona.Nombre);
+                Console.WriteLine(persona.Apellidos);
+            }
+          
         }
     }
 }
