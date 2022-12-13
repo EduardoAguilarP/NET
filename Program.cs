@@ -19,8 +19,11 @@ namespace net1
 
             Console.WriteLine("*******************");*/
 
-            PersonaNueva pnueva= new PersonaNueva("12","Marcelo","Salas");
-            repo.Insertar(pnueva);
+            /*PersonaNueva pnueva= new PersonaNueva("12","Marcelo","Salas");
+            repo.Insertar(pnueva);*/
+
+            PersonaNueva pborrar= new PersonaNueva("12","Marcelo","Salas");
+            repo.Borrar(pborrar);
 
             List<PersonaNueva> lista2= repo.BuscarTodasOrdenadasPorNombre();
 
